@@ -21,22 +21,29 @@
   <br>
   <video id="video" controls autoplay width="640" height="360"></video>
 
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script>
     const form = document.getElementById('streamForm');
     const video = document.getElementById('video');
-
+  
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const url = encodeURIComponent(document.getElementById('url').value);
       const ref = encodeURIComponent(document.getElementById('ref').value);
-
+  
       const proxyUrl = `/api/proxy?url=${url}&ref=${ref}`;
-
+  
       if (Hls.isSupported()) {
         const hls = new Hls();
         hls.loadSource(proxyUrl);
         hls.attachMedia(video);
+  
+        hls.on(Hls.Events.ERROR, function (event, data) {
+          if (data.fatal) {
+            console.error('HLS.js error:', data);
+            // Hier kannst du zusätzliche Fehlerbehandlungen einbauen
+          }
+        });
       } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
         video.src = proxyUrl;
       }

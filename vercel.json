@@ -1,0 +1,8 @@
+{
+  "builds": [
+    {
+      "src": "dependencies/package.json",
+      "use": "@vercel/node"
+    }
+  ]
+}

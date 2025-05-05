@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/stream", "destination": "/api/stream" }
+    { "source": "/",       "destination": "/public/index.html" },
+    { "source": "/stream",  "destination": "/api/stream" }
   ]
 }

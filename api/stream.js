@@ -16,7 +16,6 @@ export default async function handler(req, res) {
       }
     });
 
-    // Content-Type beibehalten oder auf MPEGURL setzen
     res.setHeader('Content-Type',
       upstream.headers.get('content-type') || 'application/vnd.apple.mpegurl');
     res.status(upstream.status);

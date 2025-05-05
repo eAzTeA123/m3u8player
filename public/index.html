@@ -2,47 +2,47 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>IPTV mit Clappr</title>
+  <title>IPTV mit MSE</title>
   <style>
-    body { background: #000; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 2rem; }
-    #player { width: 90%; max-width: 800px; height: 450px; margin-top: 1rem; }
+    body { background: #000; color: #fff; text-align: center; padding: 2rem; }
+    video { width: 90%; max-width: 800px; border: 2px solid #0f0; margin-top: 1rem; }
   </style>
 </head>
 <body>
-  <h1>📺 IPTV Stream (Clappr)</h1>
-  <div id="player"></div>
-
-  <!-- Clappr Core + HLS-Plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/clappr-hlsjs-playback@latest/dist/clappr-hlsjs-playback.min.js"></script>
-
+  <h1>📺 IPTV Direkt via MSE</h1>
+  <video id="video" controls autoplay></video>
   <script>
-    const proxyUrl = '/api/stream?url=' +
-      encodeURIComponent('https://windnew.newkso.ru/wind/premium521/mono.m3u8');
-
-    // Starte den Clappr-Player
-    new Clappr.Player({
-      source: proxyUrl,
-      parentId: '#player',
-      width: '100%',
-      height: '100%',
-      autoplay: true,
-      plugins: [Clappr.HlsjsPlayback],
-      playback: {
-        hlsjsConfig: {
-          // Vor jedem Request Header anhängen
-          xhrSetup: function (xhr /*:XMLHttpRequest*/, url /*:string*/) {
-            xhr.setRequestHeader('Referer', 'https://caq21harderv991gpluralplay.xyz/');
-            xhr.setRequestHeader('Origin',  'https://caq21harderv991gpluralplay.xyz');
-            xhr.setRequestHeader('User-Agent',
-              'Mozilla/5.0 (iPhone; CPU iPhone OS 17_7 like Mac OS X) ' +
-              'AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 ' +
-              'Mobile/15E148 Safari/604.1'
-            );
-          }
-        }
+    (async () => {
+      const video = document.getElementById('video');
+      if (!window.MediaSource) {
+        video.textContent = 'Dein Browser unterstützt kein MSE.';
+        return;
       }
-    });
+      const mediaSource = new MediaSource();
+      video.src = URL.createObjectURL(mediaSource);
+
+      mediaSource.addEventListener('sourceopen', async () => {
+        const sourceBuffer = mediaSource.addSourceBuffer('video/mp2t; codecs="avc1.77.30, mp4a.40.2"');
+
+        // 1) Playlist (.m3u8) holen
+        const playlistRes = await fetch('/api/stream?url=' + encodeURIComponent('https://windnew.newkso.ru/wind/premium521/mono.m3u8'));
+        const playlistText = await playlistRes.text();
+        const lines = playlistText.split('\n').filter(l => l && !l.startsWith('#'));
+
+        // 2) Nacheinander Segmente laden und anhängen
+        for (const segmentUrl of lines) {
+          const absolute = new URL(segmentUrl, window.location.origin + '/api/stream?url=').href;
+          const segRes = await fetch('/api/stream?url=' + encodeURIComponent(segmentUrl));
+          const data = await segRes.arrayBuffer();
+          await new Promise(resolve => {
+            sourceBuffer.appendBuffer(data);
+            sourceBuffer.addEventListener('updateend', resolve, { once: true });
+          });
+        }
+
+        mediaSource.endOfStream();
+      });
+    })();
   </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "name": "iptv-static-html",
+  "name": "iptv-videojs",
   "version": "1.0.0",
   "type": "module",
   "dependencies": {

@@ -110,9 +110,32 @@
 
     <script>
         let hls;
-        let channels = [];
         const video = document.getElementById('video');
         
+        // Initiale Channels
+        let channels = [
+            {
+                name: 'DAZN 1 GERMANY',
+                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-1.png',
+                url: 'https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8'
+            },
+            {
+                name: 'DAZN 2 GERMANY',
+                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-2.png',
+                url: 'https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8'
+            },
+            {
+                name: 'Example Channel 3',
+                icon: 'https://example.com/icon3.png',
+                url: 'https://example.com/stream3.m3u8'
+            },
+            {
+                name: 'Example Channel 4',
+                icon: 'https://example.com/icon4.png',
+                url: 'https://example.com/stream4.m3u8'
+            }
+        ];
+
         // HLS Konfiguration
         const config = {
             debug: true,
@@ -215,19 +238,7 @@
             }
         }
 
-        // Initialen Channel laden
-        const channels = [
-            {
-                name: 'DAZN 1 GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-1.png',
-                url: 'https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8'
-            },
-            {
-                name: 'DAZN 2 GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-2.png',
-                url: 'https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8'
-            }
-        ];
+        // Initialen Channel rendern
         renderChannels();
     </script>
 </body>

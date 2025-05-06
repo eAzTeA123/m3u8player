@@ -1,82 +1,57 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>HLS Stream Player</title>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <title>HLS.js Custom Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        video { width: 80%; margin: 20px auto; display: block; }
+        #config { padding: 20px; background: #f0f0f0; }
+    </style>
 </head>
 <body>
-  <h1>HLS Stream Player</h1>
-  <input type="text" id="streamUrl" placeholder="m3u8 URL eingeben">
-  <input type="text" id="referer" placeholder="Referer">
-  <input type="text" id="origin" placeholder="Origin">
-  <button onclick="playStream()">Abspielen</button>
-  <br><br>
-  <input type="file" id="playlistFile" accept=".m3u, .m3u8">
-  <ul id="channelList"></ul>
-  <video id="video" controls width="640" height="360"></video>
+    <div id="config">
+        <h2>Stream-URL:</h2>
+        <input type="text" id="streamUrl" value="https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8" style="width: 80%; padding: 8px;" />
+        <button onclick="loadStream()">Stream laden</button>
+    </div>
 
-  <script>
-    async function playStream() {
-      const url = document.getElementById('streamUrl').value;
-      const referer = document.getElementById('referer').value;
-      const origin = document.getElementById('origin').value;
-      loadStream(url, referer, origin);
-    }
+    <video id="video" controls></video>
 
-    async function loadStream(streamUrl, referer, origin) {
-      const video = document.getElementById('video');
-      const proxyUrl = '/api/proxy?url=' + encodeURIComponent(streamUrl)
-        + (referer ? '&referer=' + encodeURIComponent(referer) : '')
-        + (origin ? '&origin=' + encodeURIComponent(origin) : '');
+    <script>
+        // HLS.js-Konfiguration mit deinen Einstellungen
+        const config = {
+            debug: true,
+            enableWorker: true,
+            lowLatencyMode: false,
+            backBufferLength: 30,
+            maxBufferLength: 30,
+            maxMaxBufferLength: 60,
+            maxBufferSize: 50000000,
+            maxBufferHole: 0.5,
+            xhrSetup: (xhr, url) => {
+                xhr.setRequestHeader('Referer', 'https://caq21harderv991gpluralplay.xyz/');
+            }
+        };
 
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(proxyUrl);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          video.play();
-        });
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = proxyUrl;
-        video.addEventListener('loadedmetadata', () => {
-          video.play();
-        });
-      } else {
-        alert("Ihr Browser unterstützt kein HLS.");
-      }
-    }
+        let hls;
+        const video = document.getElementById('video');
 
-    document.getElementById('playlistFile').addEventListener('change', async (event) => {
-      const file = event.target.files[0];
-      if (!file) return;
-      const text = await file.text();
-      const res = await fetch('/api/parse', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: text })
-      });
-      const data = await res.json();
-      const list = document.getElementById('channelList');
-      list.innerHTML = '';
-      data.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item.name;
-        if (item.logo) {
-          const img = document.createElement('img');
-          img.src = item.logo;
-          img.style.height = '20px';
-          img.style.marginRight = '8px';
-          li.prepend(img);
+        // Stream laden
+        function loadStream() {
+            const streamUrl = document.getElementById('streamUrl').value;
+            
+            if (hls) {
+                hls.destroy();
+            }
+
+            hls = new Hls(config);
+            hls.loadSource(streamUrl);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
         }
-        li.addEventListener('click', () => {
-          const referer = document.getElementById('referer').value;
-          const origin = document.getElementById('origin').value;
-          loadStream(item.url, referer, origin);
-        });
-        list.appendChild(li);
-      });
-    });
-  </script>
+
+        // Initialen Stream laden
+        loadStream();
+    </script>
 </body>
 </html>

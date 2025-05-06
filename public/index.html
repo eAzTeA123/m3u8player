@@ -1,48 +1,82 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>IPTV mit MSE</title>
-  <style>
-    body { background: #000; color: #fff; text-align: center; padding: 2rem; }
-    video { width: 90%; max-width: 800px; border: 2px solid #0f0; margin-top: 1rem; }
-  </style>
+  <meta charset="UTF-8">
+  <title>HLS Stream Player</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
-  <h1>📺 IPTV Direkt via MSE</h1>
-  <video id="video" controls autoplay></video>
+  <h1>HLS Stream Player</h1>
+  <input type="text" id="streamUrl" placeholder="m3u8 URL eingeben">
+  <input type="text" id="referer" placeholder="Referer">
+  <input type="text" id="origin" placeholder="Origin">
+  <button onclick="playStream()">Abspielen</button>
+  <br><br>
+  <input type="file" id="playlistFile" accept=".m3u, .m3u8">
+  <ul id="channelList"></ul>
+  <video id="video" controls width="640" height="360"></video>
+
   <script>
-    (async () => {
+    async function playStream() {
+      const url = document.getElementById('streamUrl').value;
+      const referer = document.getElementById('referer').value;
+      const origin = document.getElementById('origin').value;
+      loadStream(url, referer, origin);
+    }
+
+    async function loadStream(streamUrl, referer, origin) {
       const video = document.getElementById('video');
-      if (!window.MediaSource) {
-        video.textContent = 'Dein Browser unterstützt kein MSE.';
-        return;
+      const proxyUrl = '/api/proxy?url=' + encodeURIComponent(streamUrl)
+        + (referer ? '&referer=' + encodeURIComponent(referer) : '')
+        + (origin ? '&origin=' + encodeURIComponent(origin) : '');
+
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(proxyUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play();
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = proxyUrl;
+        video.addEventListener('loadedmetadata', () => {
+          video.play();
+        });
+      } else {
+        alert("Ihr Browser unterstützt kein HLS.");
       }
-      const mediaSource = new MediaSource();
-      video.src = URL.createObjectURL(mediaSource);
+    }
 
-      mediaSource.addEventListener('sourceopen', async () => {
-        const sourceBuffer = mediaSource.addSourceBuffer('video/mp2t; codecs="avc1.77.30, mp4a.40.2"');
-
-        // 1) Playlist (.m3u8) holen
-        const playlistRes = await fetch('/api/stream?url=' + encodeURIComponent('https://windnew.newkso.ru/wind/premium521/mono.m3u8'));
-        const playlistText = await playlistRes.text();
-        const lines = playlistText.split('\n').filter(l => l && !l.startsWith('#'));
-
-        // 2) Nacheinander Segmente laden und anhängen
-        for (const segmentUrl of lines) {
-          const absolute = new URL(segmentUrl, window.location.origin + '/api/stream?url=').href;
-          const segRes = await fetch('/api/stream?url=' + encodeURIComponent(segmentUrl));
-          const data = await segRes.arrayBuffer();
-          await new Promise(resolve => {
-            sourceBuffer.appendBuffer(data);
-            sourceBuffer.addEventListener('updateend', resolve, { once: true });
-          });
-        }
-
-        mediaSource.endOfStream();
+    document.getElementById('playlistFile').addEventListener('change', async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const text = await file.text();
+      const res = await fetch('/api/parse', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: text })
       });
-    })();
+      const data = await res.json();
+      const list = document.getElementById('channelList');
+      list.innerHTML = '';
+      data.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        if (item.logo) {
+          const img = document.createElement('img');
+          img.src = item.logo;
+          img.style.height = '20px';
+          img.style.marginRight = '8px';
+          li.prepend(img);
+        }
+        li.addEventListener('click', () => {
+          const referer = document.getElementById('referer').value;
+          const origin = document.getElementById('origin').value;
+          loadStream(item.url, referer, origin);
+        });
+        list.appendChild(li);
+      });
+    });
   </script>
 </body>
 </html>

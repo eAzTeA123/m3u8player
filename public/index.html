@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Myrcale Player</title>
+    <title>Advanced HLS Player</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         :root {
@@ -19,26 +19,11 @@
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 20px;
-            height: 90vh;
         }
         .channel-list {
             background: #2a2a2a;
             padding: 15px;
             border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-        }
-        .channel-search {
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            border: none;
-            background: #333;
-            color: white;
-        }
-        .channel-scroll {
-            overflow-y: auto;
-            flex-grow: 1;
         }
         .channel-item {
             display: flex;
@@ -48,9 +33,6 @@
             cursor: pointer;
             background: #333;
             border-radius: 4px;
-        }
-        .channel-item:hover {
-            background: #444;
         }
         .channel-item img {
             width: 40px;
@@ -72,32 +54,16 @@
             border-radius: 4px;
             border: 1px solid #444;
         }
-        /* Scrollbar Styling */
-        .channel-scroll::-webkit-scrollbar {
-            width: 8px;
-        }
-        .channel-scroll::-webkit-scrollbar-track {
-            background: #2a2a2a;
-        }
-        .channel-scroll::-webkit-scrollbar-thumb {
-            background: #555;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="channel-list">
-            <input type="text" id="channelSearch" class="channel-search" placeholder="Sender suchen...">
-            <div class="channel-scroll" id="channelScroll">
-                <!-- Channels werden hier dynamisch eingefügt -->
-            </div>
-        </div>
+        <div class="channel-list" id="channelList"></div>
         
         <div>
             <div class="controls">
                 <input type="text" id="refererInput" placeholder="Referer URL" 
-                       value="https://caq21harderv991gpluralplay.xyz/" style="width: 300px;">
+                       value="https://ddy6new.newkso.ru/" style="width: 300px;">
                 
                 <input type="file" id="m3u8Upload" accept=".m3u8">
                 <button onclick="addCustomChannel()">Add Channel</button>
@@ -124,17 +90,6 @@
             }
         };
 
-        // Suchfunktion
-        document.getElementById('channelSearch').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('.channel-item');
-            
-            items.forEach(item => {
-                const channelName = item.textContent.toLowerCase();
-                item.style.display = channelName.includes(searchTerm) ? 'flex' : 'none';
-            });
-        });
-
         // M3U8 Parser
         function parseM3U8(content) {
             const lines = content.split('\n');
@@ -159,7 +114,7 @@
 
         // Channel Liste rendern
         function renderChannels() {
-            const container = document.getElementById('channelScroll');
+            const container = document.getElementById('channelList');
             container.innerHTML = channels.map((channel, index) => `
                 <div class="channel-item" onclick="loadChannel(${index})">
                     ${channel.icon ? `<img src="${channel.icon}" alt="Logo">` : ''}
@@ -217,7 +172,7 @@
 
         // Initialen Channel laden
         channels = [{
-            name: 'DAZN 1 GERMANY',
+            name: 'Default Channel',
             icon: '',
             url: 'https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8'
         }];

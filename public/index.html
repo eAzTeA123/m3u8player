@@ -1,57 +1,182 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HLS.js Custom Demo</title>
+    <title>Advanced HLS Player</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
-        video { width: 80%; margin: 20px auto; display: block; }
-        #config { padding: 20px; background: #f0f0f0; }
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #fff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+        .channel-list {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .channel-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            background: #333;
+            border-radius: 4px;
+        }
+        .channel-item img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        video {
+            width: 100%;
+            background: #000;
+            border-radius: 8px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 4px;
+            border: 1px solid #444;
+        }
     </style>
 </head>
 <body>
-    <div id="config">
-        <h2>Stream-URL:</h2>
-        <input type="text" id="streamUrl" value="https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8" style="width: 80%; padding: 8px;" />
-        <button onclick="loadStream()">Stream laden</button>
+    <div class="container">
+        <div class="channel-list" id="channelList"></div>
+        
+        <div>
+            <div class="controls">
+                <input type="text" id="refererInput" placeholder="Referer URL" 
+                       value="https://ddy6new.newkso.ru/" style="width: 300px;">
+                
+                <input type="file" id="m3u8Upload" accept=".m3u8">
+                <button onclick="addCustomChannel()">Add Channel</button>
+                
+                <div id="currentChannel" style="margin: 15px 0; font-weight: bold;"></div>
+                <video id="video" controls></video>
+            </div>
+        </div>
     </div>
 
-    <video id="video" controls></video>
-
     <script>
-        // HLS.js-Konfiguration mit deinen Einstellungen
+        let hls;
+        let channels = [];
+        const video = document.getElementById('video');
+        
+        // HLS Konfiguration
         const config = {
             debug: true,
             enableWorker: true,
             lowLatencyMode: false,
-            backBufferLength: 30,
             maxBufferLength: 30,
-            maxMaxBufferLength: 60,
-            maxBufferSize: 50000000,
-            maxBufferHole: 0.5,
-            xhrSetup: (xhr, url) => {
-                xhr.setRequestHeader('Referer', 'https://caq21harderv991gpluralplay.xyz/');
+            xhrSetup: (xhr) => {
+                xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
             }
         };
 
-        let hls;
-        const video = document.getElementById('video');
-
-        // Stream laden
-        function loadStream() {
-            const streamUrl = document.getElementById('streamUrl').value;
+        // M3U8 Parser
+        function parseM3U8(content) {
+            const lines = content.split('\n');
+            const channels = [];
+            let current = {};
             
-            if (hls) {
-                hls.destroy();
-            }
+            lines.forEach(line => {
+                if(line.startsWith('#EXTINF')) {
+                    current = {
+                        name: line.split(',')[1]?.trim() || 'Unbekannter Sender',
+                        icon: line.match(/tvg-logo="(.*?)"/)?.[1] || '',
+                        url: ''
+                    };
+                }
+                else if(line.startsWith('http')) {
+                    current.url = line.trim();
+                    channels.push(current);
+                }
+            });
+            return channels;
+        }
 
-            hls = new Hls(config);
-            hls.loadSource(streamUrl);
+        // Channel Liste rendern
+        function renderChannels() {
+            const container = document.getElementById('channelList');
+            container.innerHTML = channels.map((channel, index) => `
+                <div class="channel-item" onclick="loadChannel(${index})">
+                    ${channel.icon ? `<img src="${channel.icon}" alt="Logo">` : ''}
+                    <div>${channel.name}</div>
+                </div>
+            `).join('');
+        }
+
+        // Channel laden
+        function loadChannel(index) {
+            const channel = channels[index];
+            document.getElementById('currentChannel').innerHTML = `
+                Now Playing: ${channel.icon ? `<img src="${channel.icon}" style="height: 30px">` : ''}
+                ${channel.name}
+            `;
+            
+            if(hls) hls.destroy();
+            
+            hls = new Hls({...config, 
+                xhrSetup: (xhr) => {
+                    xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
+                }
+            });
+            
+            hls.loadSource(channel.url);
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
         }
 
-        // Initialen Stream laden
-        loadStream();
+        // M3U8 Upload
+        document.getElementById('m3u8Upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function() {
+                channels = parseM3U8(reader.result);
+                renderChannels();
+            };
+            
+            reader.readAsText(file);
+        });
+
+        // Manuellen Channel hinzufügen
+        function addCustomChannel() {
+            const url = prompt('Stream URL:');
+            if(url) {
+                channels.push({
+                    name: prompt('Channel Name:') || 'Custom Channel',
+                    icon: prompt('Icon URL (optional):') || '',
+                    url: url
+                });
+                renderChannels();
+            }
+        }
+
+        // Initialen Channel laden
+        channels = [{
+            name: 'Default Channel',
+            icon: '',
+            url: 'https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8'
+        }];
+        renderChannels();
     </script>
 </body>
 </html>

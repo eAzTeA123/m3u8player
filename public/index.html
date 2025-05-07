@@ -1,119 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
+    <meta charset="UTF-8">
     <title>Myrcale Player</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         :root {
-            --bg-color: #1a1a1a;
-            --text-color: #fff;
+            --bg: #121212;
+            --panel: #1f1f1f;
+            --text: #e0e0e0;
+            --accent: #2196f3;
         }
+
         body {
-            font-family: Arial, sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
             margin: 0;
-            padding: 20px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 20px;
-            height: 90vh;
-        }
-        .channel-list {
-            background: #2a2a2a;
-            padding: 15px;
-            border-radius: 8px;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
             display: flex;
             flex-direction: column;
         }
-        .channel-search {
-            padding: 10px;
+
+        header {
+            background: var(--panel);
+            padding: 15px 20px;
+            font-size: 1.4rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: var(--panel);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #333;
+        }
+
+        .search-box {
             margin-bottom: 15px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
             border-radius: 4px;
             border: none;
-            background: #333;
+            background: #2a2a2a;
             color: white;
         }
-        .channel-scroll {
-            overflow-y: auto;
+
+        .channel-list {
             flex-grow: 1;
+            overflow-y: auto;
         }
+
         .channel-item {
+            background: #2a2a2a;
+            border-radius: 4px;
+            padding: 10px;
             display: flex;
             align-items: center;
-            padding: 10px;
-            margin: 5px 0;
             cursor: pointer;
-            background: #333;
-            border-radius: 4px;
+            margin-bottom: 8px;
+            transition: background 0.2s;
         }
+
         .channel-item:hover {
-            background: #444;
+            background: #333;
         }
+
         .channel-item img {
             width: 40px;
             height: 40px;
             margin-right: 10px;
             border-radius: 4px;
         }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow: hidden;
+        }
+
         .controls {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
-        video {
-            width: 100%;
-            background: #000;
-            border-radius: 8px;
-        }
-        input, button {
+
+        .controls input[type="text"],
+        .controls input[type="file"],
+        .controls button {
+            margin: 5px 10px 5px 0;
             padding: 8px;
-            margin: 5px;
             border-radius: 4px;
             border: 1px solid #444;
+            background: #1a1a1a;
+            color: white;
         }
-        /* Scrollbar Styling */
-        .channel-scroll::-webkit-scrollbar {
+
+        video {
+            width: 100%;
+            background: black;
+            border-radius: 8px;
+            max-height: 70vh;
+        }
+
+        #uploadStatus {
+            font-size: 0.85em;
+            margin-top: 5px;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+        }
+
+        /* Scrollbar */
+        .channel-list::-webkit-scrollbar {
             width: 8px;
         }
-        .channel-scroll::-webkit-scrollbar-track {
-            background: #2a2a2a;
-        }
-        .channel-scroll::-webkit-scrollbar-thumb {
-            background: #555;
+
+        .channel-list::-webkit-scrollbar-thumb {
+            background: #444;
             border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="channel-list">
-            <input type="text" id="channelSearch" class="channel-search" placeholder="Sender suchen...">
-            <div class="channel-scroll" id="channelScroll">
-                <!-- Channels werden hier dynamisch eingefügt -->
-            </div>
+<header>
+    Myrcale Player
+</header>
+<div class="container">
+    <div class="sidebar">
+        <div class="search-box">
+            <input type="text" id="channelSearch" placeholder="Sender suchen...">
         </div>
-        
-        <div>
-            <div class="controls">
-                <input type="text" id="refererInput" placeholder="Referer URL" 
-                       value="https://caq21harderv991gpluralplay.xyz/" style="width: 300px;">
-                
-                <input type="file" id="m3u8Upload" accept=".m3u8">
-                <button onclick="addCustomChannel()">Add Channel</button>
-                
-                <div id="currentChannel" style="margin: 15px 0; font-weight: bold;"></div>
-                <video id="video" controls></video>
-            </div>
+        <div class="channel-list" id="channelScroll">
+            <!-- Dynamische Sender -->
         </div>
     </div>
+    <div class="main">
+        <div class="controls">
+            <input type="text" id="refererInput" placeholder="Referer URL"
+                   value="https://caq21harderv991gpluralplay.xyz/" style="width: 300px;">
+            <input type="file" id="m3u8Upload" accept=".m3u8">
+            <button onclick="addCustomChannel()">+ Sender</button>
+            <span id="uploadStatus"></span>
+        </div>
+        <div id="currentChannel" style="margin-bottom: 10px; font-weight: bold;"></div>
+        <video id="video" controls></video>
+    </div>
+</div>
 
-    <script>
-        let hls;
-        const video = document.getElementById('video');
-        
-        // Initiale Channels
-        let channels = [
+<script>
+    let hls;
+    const video = document.getElementById('video');
+    const uploadStatus = document.getElementById('uploadStatus');
+
+    let channels = [
             {
                 name: 'DAZN 1 GERMANY',
                 icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-1.png',
@@ -151,111 +212,101 @@
             },
             
         ];
+    const config = {
+        debug: false,
+        enableWorker: true,
+        xhrSetup: (xhr) => {
+            xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
+        }
+    };
 
-        // HLS Konfiguration
-        const config = {
-            debug: true,
-            enableWorker: true,
-            lowLatencyMode: false,
-            maxBufferLength: 30,
-            xhrSetup: (xhr) => {
-                xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
+    function renderChannels() {
+        const container = document.getElementById('channelScroll');
+        container.innerHTML = channels.map((ch, i) => `
+            <div class="channel-item" onclick="loadChannel(${i})">
+                ${ch.icon ? `<img src="${ch.icon}" alt="Logo">` : ''}
+                <div>${ch.name}</div>
+            </div>
+        `).join('');
+    }
+
+    function loadChannel(index) {
+        const channel = channels[index];
+        document.getElementById('currentChannel').innerHTML = `
+            Läuft: ${channel.icon ? `<img src="${channel.icon}" style="height: 25px; vertical-align: middle;"> ` : ''}
+            ${channel.name}
+        `;
+
+        if (hls) hls.destroy();
+
+        hls = new Hls(config);
+        hls.loadSource(channel.url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+    }
+
+    function addCustomChannel() {
+        const url = prompt('Stream URL:');
+        if (!url) return;
+        const name = prompt('Name des Senders:') || 'Custom Channel';
+        const icon = prompt('Logo URL (optional):') || '';
+        channels.push({ name, icon, url });
+        renderChannels();
+    }
+
+    function updateStatus(msg) {
+        uploadStatus.textContent = msg;
+    }
+
+    function parseM3U8(content) {
+        const lines = content.split('\n');
+        const parsed = [];
+        let current = {};
+
+        for (let line of lines) {
+            if (line.startsWith('#EXTINF')) {
+                current = {
+                    name: line.split(',')[1]?.trim() || 'Unbekannter Sender',
+                    icon: line.match(/tvg-logo="(.*?)"/)?.[1] || '',
+                    url: ''
+                };
+            } else if (line.startsWith('http')) {
+                current.url = line.trim();
+                parsed.push(current);
             }
-        };
+        }
+        return parsed;
+    }
 
-        // Suchfunktion
-        document.getElementById('channelSearch').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('.channel-item');
-            
-            items.forEach(item => {
-                const channelName = item.textContent.toLowerCase();
-                item.style.display = channelName.includes(searchTerm) ? 'flex' : 'none';
-            });
+    document.getElementById('channelSearch').addEventListener('input', function (e) {
+        const search = e.target.value.toLowerCase();
+        document.querySelectorAll('.channel-item').forEach(item => {
+            item.style.display = item.textContent.toLowerCase().includes(search) ? 'flex' : 'none';
         });
+    });
 
-        // M3U8 Parser
-        function parseM3U8(content) {
-            const lines = content.split('\n');
-            const channels = [];
-            let current = {};
-            
-            lines.forEach(line => {
-                if(line.startsWith('#EXTINF')) {
-                    current = {
-                        name: line.split(',')[1]?.trim() || 'Unbekannter Sender',
-                        icon: line.match(/tvg-logo="(.*?)"/)?.[1] || '',
-                        url: ''
-                    };
-                }
-                else if(line.startsWith('http')) {
-                    current.url = line.trim();
-                    channels.push(current);
-                }
-            });
-            return channels;
-        }
+    document.getElementById('m3u8Upload').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
 
-        // Channel Liste rendern
-        function renderChannels() {
-            const container = document.getElementById('channelScroll');
-            container.innerHTML = channels.map((channel, index) => `
-                <div class="channel-item" onclick="loadChannel(${index})">
-                    ${channel.icon ? `<img src="${channel.icon}" alt="Logo">` : ''}
-                    <div>${channel.name}</div>
-                </div>
-            `).join('');
-        }
+        const reader = new FileReader();
+        updateStatus('Datei wird geladen...');
 
-        // Channel laden
-        function loadChannel(index) {
-            const channel = channels[index];
-            document.getElementById('currentChannel').innerHTML = `
-                Now Playing: ${channel.icon ? `<img src="${channel.icon}" style="height: 30px">` : ''}
-                ${channel.name}
-            `;
-            
-            if(hls) hls.destroy();
-            
-            hls = new Hls({...config, 
-                xhrSetup: (xhr) => {
-                    xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
-                }
-            });
-            
-            hls.loadSource(channel.url);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-        }
-
-        // M3U8 Upload
-        document.getElementById('m3u8Upload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            
-            reader.onload = function() {
+        reader.onload = function () {
+            updateStatus('Sender werden geladen...');
+            setTimeout(() => {
                 channels = parseM3U8(reader.result);
                 renderChannels();
-            };
-            
-            reader.readAsText(file);
-        });
+                updateStatus(`${channels.length} Sender geladen.`);
+            }, 50);
+        };
 
-        // Manuellen Channel hinzufügen
-        function addCustomChannel() {
-            const url = prompt('Stream URL:');
-            if(url) {
-                channels.push({
-                    name: prompt('Channel Name:') || 'Custom Channel',
-                    icon: prompt('Icon URL (optional):') || '',
-                    url: url
-                });
-                renderChannels();
-            }
-        }
+        reader.onerror = () => updateStatus('Fehler beim Lesen der Datei.');
 
-        // Initialen Channel rendern
-        renderChannels();
-    </script>
+        reader.readAsText(file);
+    });
+
+    renderChannels();
+</script>
 </body>
 </html>

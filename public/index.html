@@ -279,14 +279,90 @@
             Läuft: ${channel.icon ? `<img src="${channel.icon}" style="height: 25px; vertical-align: middle;"> ` : ''}
             ${channel.name}
         `;
-
-        if (hls) hls.destroy();
-
-        hls = new Hls(getHlsConfig());
-        hls.loadSource(channel.url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+    
+        // Clean up previous instance
+        if (hls) {
+            hls.destroy();
+            video.removeAttribute('src');
+            video.load();
+        }
+    
+        // Create new HLS instance with robust config
+        hls = new Hls({
+            debug: false,
+            enableWorker: true,
+            lowLatencyMode: false,
+            maxBufferLength: 30,
+            maxMaxBufferLength: 60,
+            maxBufferSize: 60 * 1000 * 1000,
+            maxBufferHole: 0.5,
+            startLevel: -1, // Auto-select starting quality
+            xhrSetup: (xhr) => {
+                xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
+                xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
+            }
+        });
+    
+        // Error handling
+        hls.on(Hls.Events.ERROR, (event, data) => {
+            if (data.fatal) {
+                switch(data.type) {
+                    case Hls.ErrorTypes.NETWORK_ERROR:
+                        console.log('Network Error - trying to recover');
+                        hls.startLoad();
+                        break;
+                    case Hls.ErrorTypes.MEDIA_ERROR:
+                        console.log('Media Error - trying to recover');
+                        hls.recoverMediaError();
+                        break;
+                    default:
+                        console.log('Unrecoverable error');
+                        hls.destroy();
+                        break;
+                }
+            }
+        });
+    
+        // Try to play with HLS.js first
+        if (Hls.isSupported()) {
+            try {
+                hls.loadSource(channel.url);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    video.play().catch(e => {
+                        console.log('Autoplay blocked:', e);
+                        // Show play button to user
+                    });
+                });
+            } catch (e) {
+                console.log('HLS.js failed, trying native playback');
+                tryNativePlayback(channel.url);
+            }
+        } else {
+            // Fallback to native HLS
+            tryNativePlayback(channel.url);
+        }
     }
+
+function tryNativePlayback(url) {
+    video.src = url;
+    video.load();
+    
+    const playAttempt = setInterval(() => {
+        video.play()
+            .then(() => {
+                clearInterval(playAttempt);
+            })
+            .catch(e => {
+                console.log('Play attempt failed', e);
+            });
+    }, 1000);
+    
+    // Give up after 5 attempts
+    setTimeout(() => {
+        clearInterval(playAttempt);
+    }, 5000);
+}
 
     function addCustomChannel() {
         const url = prompt('Stream URL:');

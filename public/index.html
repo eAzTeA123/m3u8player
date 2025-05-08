@@ -238,11 +238,21 @@
             Läuft: ${channel.icon ? `<img src="${channel.icon}" style="height: 25px; vertical-align: middle;"> ` : ''}
             ${channel.name}
         `;
-
+    
         if (hls) hls.destroy();
-
-        hls = new Hls(getHlsConfig());
-        hls.loadSource(channel.url);
+    
+        // Proxy-URL erstellen
+        const proxyUrl = `/api/referer?url=${encodeURIComponent(channel.url)}`;
+        
+        hls = new Hls({
+            debug: false,
+            enableWorker: true,
+            xhrSetup: (xhr) => {
+                xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
+            }
+        });
+    
+        hls.loadSource(proxyUrl); // Proxy statt direkter URL
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
     }

@@ -249,8 +249,14 @@
 
     // HLS.js Konfiguration mit dynamischem Referer
     const getHlsConfig = () => ({
-        debug: false,
+        debug: true, // Keep debug enabled for troubleshooting
         enableWorker: true,
+        lowLatencyMode: false,
+        backBufferLength: 30,
+        maxBufferLength: 60,
+        maxMaxBufferLength: 600,
+        maxBufferSize: 60 * 1000 * 1000, // 60MB
+        maxBufferHole: 0.5,
         xhrSetup: (xhr) => {
             xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
             xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');

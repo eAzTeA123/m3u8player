@@ -175,50 +175,52 @@
     const uploadStatus = document.getElementById('uploadStatus');
 
     let channels = [
-            {
-                name: 'DAZN 1 GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-1.png',
-                url: 'https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8'
-            },
-            {
-                name: 'DAZN 2 GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-2.png',
-                url: 'https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8'
-            },
-            {
-                name: 'Sky Sport Bundesliga 1 GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sky-sports-bundesliga-1-hd.png',
-                url: 'https://ddy6new.newkso.ru/ddy6/premium558/mono.m3u8'
-            },
-            {
-                name: 'Sky Top Event GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sky-sport-top-event-de.png',
-                url: 'https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8'
-            },
-            {
-                name: 'Sky Sports F1 GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sky-sport-f1-de.png',
-                url: 'https://windnew.newkso.ru/wind/premium274/mono.m3u8'
-            },
-            {
-                name: 'Sports 1 GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sport1-de.png',
-                url: 'https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8'
-            },
-            {
-                name: 'Sports 1+ GERMANY',
-                icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sport1-plus-de.png',
-                url: 'https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8'
-            },
-            
-        ];
-    const config = {
+        {
+            name: 'DAZN 1 GERMANY',
+            icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-1.png',
+            url: 'https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8'
+        },
+        {
+            name: 'DAZN 2 GERMANY',
+            icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/dazn-2.png',
+            url: 'https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8'
+        },
+        {
+            name: 'Sky Sport Bundesliga 1 GERMANY',
+            icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sky-sports-bundesliga-1-hd.png',
+            url: 'https://ddy6new.newkso.ru/ddy6/premium558/mono.m3u8'
+        },
+        {
+            name: 'Sky Top Event GERMANY',
+            icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sky-sport-top-event-de.png',
+            url: 'https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8'
+        },
+        {
+            name: 'Sky Sports F1 GERMANY',
+            icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sky-sport-f1-de.png',
+            url: 'https://windnew.newkso.ru/wind/premium274/mono.m3u8'
+        },
+        {
+            name: 'Sports 1 GERMANY',
+            icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sport1-de.png',
+            url: 'https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8'
+        },
+        {
+            name: 'Sports 1+ GERMANY',
+            icon: 'https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/logos/sport1-plus-de.png',
+            url: 'https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8'
+        },
+    ];
+
+    // HLS.js Konfiguration mit dynamischem Referer
+    const getHlsConfig = () => ({
         debug: false,
         enableWorker: true,
         xhrSetup: (xhr) => {
             xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
+            xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
         }
-    };
+    });
 
     function renderChannels() {
         const container = document.getElementById('channelScroll');
@@ -239,7 +241,7 @@
 
         if (hls) hls.destroy();
 
-        hls = new Hls(config);
+        hls = new Hls(getHlsConfig());
         hls.loadSource(channel.url);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
@@ -278,6 +280,7 @@
         return parsed;
     }
 
+    // Event-Listener
     document.getElementById('channelSearch').addEventListener('input', function (e) {
         const search = e.target.value.toLowerCase();
         document.querySelectorAll('.channel-item').forEach(item => {
@@ -302,10 +305,10 @@
         };
 
         reader.onerror = () => updateStatus('Fehler beim Lesen der Datei.');
-
         reader.readAsText(file);
     });
 
+    // Initialisierung
     renderChannels();
 </script>
 </body>

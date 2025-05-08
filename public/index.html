@@ -109,9 +109,14 @@
 
         video {
             width: 100%;
-            background: black;
+            background: #000 !important;
             border-radius: 8px;
             max-height: 70vh;
+            object-fit: contain;
+            image-rendering: crisp-edges;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
         }
 
         #uploadStatus {
@@ -173,6 +178,9 @@
     let hls;
     const video = document.getElementById('video');
     const uploadStatus = document.getElementById('uploadStatus');
+    let lastTime = 0;
+    let recoveryAttempts = 0;
+    const maxRecoveryAttempts = 3;
 
     let channels = [
         {
@@ -247,30 +255,30 @@
         }
     ];
 
-    // HLS.js Konfiguration mit dynamischem Referer
-    const getHlsConfig = () => ({
-        debug: true, // Keep debug enabled for troubleshooting
-        enableWorker: true,
-        lowLatencyMode: false,
-        backBufferLength: 30,
-        maxBufferLength: 60,
-        maxMaxBufferLength: 600,
-        maxBufferSize: 60 * 1000 * 1000, // 60MB
-        maxBufferHole: 0.5,
-        xhrSetup: (xhr) => {
-            xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
-            xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
-        }
-    });
+    function forceHardwareAcceleration() {
+        video.style.transform = 'translateZ(0)';
+        video.style.webkitTransform = 'translateZ(0)';
+        video.style.perspective = '1000px';
+        video.style.backfaceVisibility = 'hidden';
+    }
 
-    function renderChannels() {
-        const container = document.getElementById('channelScroll');
-        container.innerHTML = channels.map((ch, i) => `
-            <div class="channel-item" onclick="loadChannel(${i})">
-                ${ch.icon ? `<img src="${ch.icon}" alt="Logo">` : ''}
-                <div>${ch.name}</div>
-            </div>
-        `).join('');
+    function stabilizeStream() {
+        if (recoveryAttempts >= maxRecoveryAttempts) {
+            console.error('Max recovery attempts reached');
+            return;
+        }
+        
+        recoveryAttempts++;
+        
+        if (hls) {
+            hls.stopLoad();
+            hls.startLoad();
+        }
+        
+        video.load();
+        setTimeout(() => {
+            video.play().catch(e => console.log('Play error:', e));
+        }, 500);
     }
 
     function loadChannel(index) {
@@ -279,15 +287,14 @@
             Läuft: ${channel.icon ? `<img src="${channel.icon}" style="height: 25px; vertical-align: middle;"> ` : ''}
             ${channel.name}
         `;
-    
+
         // Clean up previous instance
         if (hls) {
             hls.destroy();
             video.removeAttribute('src');
             video.load();
         }
-    
-        // Create new HLS instance with robust config
+
         hls = new Hls({
             debug: false,
             enableWorker: true,
@@ -296,14 +303,21 @@
             maxMaxBufferLength: 60,
             maxBufferSize: 60 * 1000 * 1000,
             maxBufferHole: 0.5,
-            startLevel: -1, // Auto-select starting quality
+            startLevel: -1,
+            fragLoadingMaxRetry: 3,
+            fragLoadingMaxRetryTimeout: 2000,
+            fragLoadingRetryDelay: 500,
+            manifestLoadingMaxRetry: 3,
+            levelLoadingMaxRetry: 3,
+            startFragPrefetch: true,
+            fpsDroppedMonitoringThreshold: 0.2,
+            fpsDroppedMonitoringPeriod: 1000,
             xhrSetup: (xhr) => {
                 xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
                 xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
             }
         });
-    
-        // Error handling
+
         hls.on(Hls.Events.ERROR, (event, data) => {
             if (data.fatal) {
                 switch(data.type) {
@@ -322,16 +336,23 @@
                 }
             }
         });
-    
-        // Try to play with HLS.js first
+
+        hls.on(Hls.Events.FRAG_BUFFERED, () => {
+            forceHardwareAcceleration();
+        });
+
+        hls.on(Hls.Events.FPS_DROP, () => {
+            hls.currentLevel = -1;
+        });
+
         if (Hls.isSupported()) {
             try {
                 hls.loadSource(channel.url);
                 hls.attachMedia(video);
                 hls.on(Hls.Events.MANIFEST_PARSED, () => {
                     video.play().catch(e => {
-                        console.log('Autoplay blocked:', e);
-                        // Show play button to user
+                        console.log('Autoplay blocked - showing controls');
+                        video.controls = true;
                     });
                 });
             } catch (e) {
@@ -339,30 +360,56 @@
                 tryNativePlayback(channel.url);
             }
         } else {
-            // Fallback to native HLS
             tryNativePlayback(channel.url);
         }
+
+        // Freeze detection
+        const freezeCheckInterval = setInterval(() => {
+            if (video.readyState > 1 && !video.paused && video.currentTime === lastTime) {
+                console.log('Stream frozen - attempting recovery');
+                stabilizeStream();
+            }
+            lastTime = video.currentTime;
+        }, 5000);
+
+        video.addEventListener('loadedmetadata', () => {
+            forceHardwareAcceleration();
+        }, { once: true });
+
+        video.addEventListener('error', () => {
+            console.log('Video error - stabilizing stream');
+            stabilizeStream();
+        });
     }
 
-function tryNativePlayback(url) {
-    video.src = url;
-    video.load();
-    
-    const playAttempt = setInterval(() => {
-        video.play()
-            .then(() => {
-                clearInterval(playAttempt);
-            })
-            .catch(e => {
-                console.log('Play attempt failed', e);
-            });
-    }, 1000);
-    
-    // Give up after 5 attempts
-    setTimeout(() => {
-        clearInterval(playAttempt);
-    }, 5000);
-}
+    function tryNativePlayback(url) {
+        video.src = url;
+        video.load();
+        
+        const playAttempt = setInterval(() => {
+            video.play()
+                .then(() => {
+                    clearInterval(playAttempt);
+                })
+                .catch(e => {
+                    console.log('Play attempt failed', e);
+                });
+        }, 1000);
+        
+        setTimeout(() => {
+            clearInterval(playAttempt);
+        }, 5000);
+    }
+
+    function renderChannels() {
+        const container = document.getElementById('channelScroll');
+        container.innerHTML = channels.map((ch, i) => `
+            <div class="channel-item" onclick="loadChannel(${i})">
+                ${ch.icon ? `<img src="${ch.icon}" alt="Logo">` : ''}
+                <div>${ch.name}</div>
+            </div>
+        `).join('');
+    }
 
     function addCustomChannel() {
         const url = prompt('Stream URL:');
@@ -427,6 +474,7 @@ function tryNativePlayback(url) {
 
     // Initialisierung
     renderChannels();
+    forceHardwareAcceleration();
 </script>
 </body>
 </html>

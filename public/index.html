@@ -219,6 +219,9 @@
         xhrSetup: (xhr) => {
             xhr.setRequestHeader('Referer', document.getElementById('refererInput').value);
             xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
+            // Füge diese Header hinzu, falls nötig:
+            xhr.setRequestHeader('Origin', document.getElementById('refererInput').value);
+            xhr.withCredentials = true; // Falls Cookies benötigt werden
         }
     });
 

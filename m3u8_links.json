@@ -2,8 +2,12 @@
   "results": [
     {
       "name": "Dazn 1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZNDE/index.fmp4.m3u8?token=6136c879d8acb5490455d8d9cc8e483093e9ef8a-27c1133ea753fc1184751a43b0859780-1747175904-1747165104"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZNDE/index.fmp4.m3u8?token=88dc3a278b582b6b6356d41d67267dbfae04117d-7b0520a0b233126526f900393a3fd725-1747176584-1747165784"
+    },
+    {
+      "name": "Dazn 2",
+      "m3u8": "https://community.wideiptv.top/DAZN2DE/index.fmp4.m3u8?token=6deddbf8dc8e686140006420e9b5ceb2e2523e63-0afb7697cb685816ccb7ebed4917469c-1747176595-1747165795"
     }
   ],
-  "proxy_used": "107.172.163.27:6543:tundvodx:sefdxom0hkur"
+  "proxy_used": "154.36.110.199:6853:tundvodx:sefdxom0hkur"
 }

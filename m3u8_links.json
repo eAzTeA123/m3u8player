@@ -2,8 +2,40 @@
   "results": [
     {
       "name": "Dazn 1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZNDE/index.fmp4.m3u8?token=0d424f12c6957486ff773c79884594f0da9faa84-00c23a80503b4f4e43ec6a4a47ebd957-1747253548-1747242748"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZNDE/index.fmp4.m3u8?token=b2c354e61f0a001f90d3d3a38f06862878dbf95c-bc394887a2a2b8fd64cd5933ca382517-1747254446-1747243646"
+    },
+    {
+      "name": "Dazn 2",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZN2DE/index.fmp4.m3u8?token=5246c491dc53504f5ede2b246adcacc0e8f6b279-14cc65a27885489a280b1fcd9757cdfd-1747254457-1747243657"
+    },
+    {
+      "name": "Sky Sport Mix",
+      "m3u8": "https://community.wideiptv.top/SkySportMixDE/index.fmp4.m3u8?token=b664dad9f4fb355442f9e17b1eefae69b503ebae-71f9a691ff6043c0193b2f9b80fa7187-1747254465-1747243665"
+    },
+    {
+      "name": "Sport 1",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SPORT1DE/index.fmp4.m3u8?token=8647da085d80a2fea84cf5e90601ca5ff12dba9e-d75885454f73c1ebd84c5e052bb25918-1747254472-1747243672"
+    },
+    {
+      "name": "Sky Sport F1",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportF1DE/index.fmp4.m3u8?token=563ae3a1898208f8b73fffbc8e7393464e579cf4-fb00cc9e3722844079f15e5db7cf009f-1747254479-1747243679"
+    },
+    {
+      "name": "Sky Sport Premier League",
+      "m3u8": "https://community.wideiptv.top/SkySportPremierLeagueDE/index.fmp4.m3u8?token=6ff7ffd501e9944e0fff476f284d724a389c6cf8-bab5a1d0b51fd03412b41731de5ebe25-1747254486-1747243686"
+    },
+    {
+      "name": "Sky Sport News",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportsNewsDE/index.fmp4.m3u8?token=3df64b642a635c3b0da85e7ca0be14b6d9ec5031-55d7ca77d5bb42104800fab77c0c2134-1747254493-1747243693"
+    },
+    {
+      "name": "Sky Sport Top Event",
+      "m3u8": "https://community.wideiptv.top/SkySportTopEvent/index.fmp4.m3u8?token=4c4e50af278187ca9689d1ae46f4094a9a26c5b2-6ec6977cdac67ae52baa6ba60c7f0b0f-1747254499-1747243699"
+    },
+    {
+      "name": "Sky Sport Bundesliga",
+      "m3u8": "https://community.wideiptv.top/SkySportsBundesliga/index.fmp4.m3u8?token=3ab73cbe3b318a1ec7b4592db6335f61e4274358-4cad2a998aec363cd1b0391840d6552a-1747254506-1747243706"
     }
   ],
-  "proxy_used": "207.244.217.165:6712:tundvodx:sefdxom0hkur"
+  "proxy_used": "154.36.110.199:6853:tundvodx:sefdxom0hkur"
 }

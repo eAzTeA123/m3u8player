@@ -2,40 +2,8 @@
   "results": [
     {
       "name": "Dazn 1",
-      "m3u8": null
-    },
-    {
-      "name": "Dazn 2",
-      "m3u8": "https://community.wideiptv.top/DAZN2DE/index.fmp4.m3u8?token=c68129dc814b537472435e1eb60fe55623b256c4-25c1f3de9a4b3dac8cf43eb752e5eb6b-1747178096-1747167296"
-    },
-    {
-      "name": "Sky Sport Mix",
-      "m3u8": "https://community.wideiptv.top/SkySportMixDE/index.fmp4.m3u8?token=812c32a08a6ba83152e6585f6af707172a211f56-a835c69232a4071bf308079cb9f3bb62-1747178105-1747167305"
-    },
-    {
-      "name": "Sport 1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SPORT1DE/index.fmp4.m3u8?token=75e990b82e6619406640e0685d1f423d103452b2-e8e2e16219fdf3961505e5c44ebcb95e-1747178114-1747167314"
-    },
-    {
-      "name": "Sky Sport F1",
-      "m3u8": "https://community.wideiptv.top/SkySportF1DE/index.fmp4.m3u8?token=765740c464b84156943c3224f2095081b6b17bd1-d2adcfc6757989b2f811a2b92e0050d3-1747178122-1747167322"
-    },
-    {
-      "name": "Sky Sport Premier League",
-      "m3u8": "https://community.wideiptv.top/SkySportPremierLeagueDE/index.fmp4.m3u8?token=5b541a2dfd6887c9fecfb46fdb2e10b42bc19965-7e42a516f463a76c70b489966b441a0e-1747178131-1747167331"
-    },
-    {
-      "name": "Sky Sport News",
-      "m3u8": null
-    },
-    {
-      "name": "Sky Sport Top Event",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportTopEvent/index.fmp4.m3u8?token=d60fc6df1c6961af1c7d05c834f9e0dc0bd3b258-7ef7667d2e62eb44587aa532fecba0af-1747178154-1747167354"
-    },
-    {
-      "name": "Sky Sport Bundesliga",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportsBundesliga/index.fmp4.m3u8?token=1a7de9a12381b3b5e5002f62e1c2bf9ccd87f745-d93fd6af2a48fbd7bbd1db12599affc4-1747178163-1747167363"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZNDE/index.fmp4.m3u8?token=0d424f12c6957486ff773c79884594f0da9faa84-00c23a80503b4f4e43ec6a4a47ebd957-1747253548-1747242748"
     }
   ],
-  "proxy_used": "154.36.110.199:6853:tundvodx:sefdxom0hkur"
+  "proxy_used": "207.244.217.165:6712:tundvodx:sefdxom0hkur"
 }

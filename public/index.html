@@ -34,6 +34,11 @@
             color: #3498db;
             margin-bottom: 10px;
             font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .m3u8-link:hover {
+            text-decoration: underline;
         }
         .copy-btn {
             background-color: #3498db;
@@ -44,6 +49,7 @@
             cursor: pointer;
             font-size: 14px;
             transition: background-color 0.3s;
+            margin-top: 5px;
         }
         .copy-btn:hover {
             background-color: #2980b9;
@@ -58,6 +64,9 @@
             color: white;
             border-radius: 4px;
             font-size: 14px;
+        }
+        .link-container {
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -82,9 +91,15 @@
                         nameDiv.className = 'channel-name';
                         nameDiv.textContent = channel.name;
                         
-                        const linkDiv = document.createElement('div');
-                        linkDiv.className = 'm3u8-link';
-                        linkDiv.textContent = channel.m3u8;
+                        const linkContainer = document.createElement('div');
+                        linkContainer.className = 'link-container';
+                        
+                        const link = document.createElement('a');
+                        link.className = 'm3u8-link';
+                        link.href = channel.m3u8;
+                        link.textContent = channel.m3u8;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
                         
                         const copyBtn = document.createElement('button');
                         copyBtn.className = 'copy-btn';
@@ -101,7 +116,8 @@
                         });
                         
                         channelDiv.appendChild(nameDiv);
-                        channelDiv.appendChild(linkDiv);
+                        linkContainer.appendChild(link);
+                        channelDiv.appendChild(linkContainer);
                         channelDiv.appendChild(copyBtn);
                         container.appendChild(channelDiv);
                     });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myrcale Player</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.13/dist/hls.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -196,6 +196,7 @@
                 hls.loadSource(m3u8Url, {
                     xhrSetup: function(xhr) {
                         xhr.setRequestHeader('Origin', proxyUrl);
+                         xhr.setRequestHeader('Referer', "https://freeshot.live/");
                     }
                 });
 

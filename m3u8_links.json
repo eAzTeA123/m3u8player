@@ -2,40 +2,40 @@
   "results": [
     {
       "name": "Dazn 1",
-      "m3u8": null
+      "m3u8": "https://community.wideiptv.top/DAZN2DE/index.fmp4.m3u8?token=b311c4ddc95e5d4f9b496072b2b47d5753b6c4bd-595e4f1048ab1a5830af8c29311a36d4-1747344156-1747333356"
     },
     {
       "name": "Dazn 2",
-      "m3u8": "https://community.wideiptv.top/DAZN2DE/index.fmp4.m3u8?token=109c9691d1c69e67a3cf5b291d9c6d4844f2ba99-515df96e5e927ae2fe9248f23a66cfed-1747341835-1747331035"
+      "m3u8": "https://community.wideiptv.top/DAZN2DE/index.fmp4.m3u8?token=6d89b002cabe915a505e095326cb89903a31b57a-b84f7d76cf68c3a92a4b7ba37e8675fe-1747344165-1747333365"
     },
     {
       "name": "Sky Sport Mix",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportMixDE/index.fmp4.m3u8?token=87d6c3e93e50d4f2bd95ae5a71b7eb0a4851b89c-891d5ffba898b24e335a7157a8648388-1747341843-1747331043"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportMixDE/index.fmp4.m3u8?token=f6b25826f5a67e60e84786846f1d568e6fa63c96-19883aff16807462a2148e1e656cb093-1747344174-1747333374"
     },
     {
       "name": "Sport 1",
-      "m3u8": "https://community.wideiptv.top/SPORT1DE/index.fmp4.m3u8?token=f6ee239c7e1c97b47fcf50d1ad971db60a2a5cf6-a2b1b92da58880c17595d8cfa0239e9e-1747341850-1747331050"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SPORT1DE/index.fmp4.m3u8?token=14e0977895049f829cd7afe0624ed346704c4560-35a819bdd540531a321b152e05175853-1747344181-1747333381"
     },
     {
       "name": "Sky Sport F1",
-      "m3u8": "https://community.wideiptv.top/SkySportF1DE/index.fmp4.m3u8?token=017a2c0591b1dba7e24f1d8f0014669cfb70795b-c0a3deb30eb70c23d9860a270061c8f8-1747341857-1747331057"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportF1DE/index.fmp4.m3u8?token=194da9b9bbd115f3236dbf80a5390acd5c24502e-9488624318c6ece04d3921ad5d408158-1747344187-1747333387"
     },
     {
       "name": "Sky Sport Premier League",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportPremierLeagueDE/index.fmp4.m3u8?token=6419e7cd85ef32d2b78a835b7477898e42733909-1a002a28e98f8298ffdfac556807166f-1747341864-1747331064"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportPremierLeagueDE/index.fmp4.m3u8?token=d72e553ed6974f6904823bc161145f89ea105c3d-61688ac8596c78d84690b3bca4054ee0-1747344194-1747333394"
     },
     {
       "name": "Sky Sport News",
-      "m3u8": "https://community.wideiptv.top/SkySportsNewsDE/index.fmp4.m3u8?token=dfa169529b51a2fb7881b73032500af667993300-907ca47540f13407e9b0c093d574040f-1747341871-1747331071"
+      "m3u8": "https://community.wideiptv.top/SkySportsNewsDE/index.fmp4.m3u8?token=fdf21337f4a07f3338644e939c9d1960cd1a99d1-0ac898fd71027d82366cbb27057ba9b8-1747344200-1747333400"
     },
     {
       "name": "Sky Sport Top Event",
-      "m3u8": "https://community.wideiptv.top/SkySportTopEvent/index.fmp4.m3u8?token=8d5364374200730cc1c0822998ffaeea84f652a9-0990a9fdacde50c795f64b164b3d84cb-1747341878-1747331078"
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportTopEvent/index.fmp4.m3u8?token=3456ee0a688d84284b911fa3c660cd3f51385e34-372add5ba18faad59bdd4b0aa8a1a2dc-1747344207-1747333407"
     },
     {
       "name": "Sky Sport Bundesliga",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportsBundesliga/index.fmp4.m3u8?token=ab03391ea2fc303bf42294f9385151407e91fd01-2e802cbafe8c6d12d8a722d9263ded21-1747341885-1747331085"
+      "m3u8": "https://community.wideiptv.top/SkySportsBundesliga/index.fmp4.m3u8?token=ed6790eefd51fcbca56cdfeb1fc428b5b6a48820-487ab7175dd0543e308b7f18186afd86-1747344214-1747333414"
     }
   ],
-  "proxy_used": "207.244.217.165:6712:tundvodx:sefdxom0hkur"
+  "proxy_used": "brd.superproxy.io:33335:brd-customer-hl_5a025b10-zone-freemium-ip-185.150.85.170:ly9d05070osi"
 }

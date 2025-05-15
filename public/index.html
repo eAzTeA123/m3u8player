@@ -29,7 +29,7 @@
             margin-bottom: 5px;
             color: #2c3e50;
         }
-        .m3u8-link {
+        .m3u8-link, .streamlink-command {
             word-break: break-all;
             color: #3498db;
             margin-bottom: 10px;
@@ -39,6 +39,16 @@
         }
         .m3u8-link:hover {
             text-decoration: underline;
+        }
+        .streamlink-command {
+            background-color: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            color: #333;
+            font-family: monospace;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .copy-btn {
             background-color: #3498db;
@@ -68,6 +78,9 @@
         .link-container {
             margin-bottom: 5px;
         }
+        .command-container {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -77,11 +90,21 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('channels-container');
+            const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36";
             
             // JSON-Daten von der URL laden
             fetch('https://raw.githubusercontent.com/eAzTeA123/m3u8player/refs/heads/main/m3u8_links.json')
                 .then(response => response.json())
                 .then(data => {
+                    // Proxy aus den JSON-Daten parsen
+                    let proxy = "";
+                    if (data.proxy_used) {
+                        const proxyParts = data.proxy_used.split(':');
+                        if (proxyParts.length === 4) {
+                            proxy = `http://${proxyParts[2]}:${proxyParts[3]}@${proxyParts[0]}:${proxyParts[1]}`;
+                        }
+                    }
+                    
                     // Channels anzeigen
                     data.results.forEach(channel => {
                         const channelDiv = document.createElement('div');
@@ -103,14 +126,39 @@
                         
                         const copyBtn = document.createElement('button');
                         copyBtn.className = 'copy-btn';
-                        copyBtn.textContent = 'Link kopieren';
+                        copyBtn.textContent = 'Copy Link';
                         copyBtn.addEventListener('click', function() {
                             navigator.clipboard.writeText(channel.m3u8).then(() => {
-                                copyBtn.textContent = 'Kopiert!';
+                                copyBtn.textContent = 'Copied!';
                                 copyBtn.classList.add('copied');
                                 setTimeout(() => {
-                                    copyBtn.textContent = 'Link kopieren';
+                                    copyBtn.textContent = 'Copy Link';
                                     copyBtn.classList.remove('copied');
+                                }, 2000);
+                            });
+                        });
+                        
+                        // Streamlink-Befehl hinzufügen
+                        const commandContainer = document.createElement('div');
+                        commandContainer.className = 'command-container';
+                        
+                        const commandText = document.createElement('div');
+                        commandText.className = 'streamlink-command';
+                        const command = proxy ? 
+                            `streamlink --http-proxy "${proxy}" "${channel.m3u8}" best --http-header "User-Agent=${userAgent}"` :
+                            `streamlink "${channel.m3u8}" best --http-header "User-Agent=${userAgent}"`;
+                        commandText.textContent = command;
+                        
+                        const copyCmdBtn = document.createElement('button');
+                        copyCmdBtn.className = 'copy-btn';
+                        copyCmdBtn.textContent = 'Copy Streamlink';
+                        copyCmdBtn.addEventListener('click', function() {
+                            navigator.clipboard.writeText(command).then(() => {
+                                copyCmdBtn.textContent = 'Copied!';
+                                copyCmdBtn.classList.add('copied');
+                                setTimeout(() => {
+                                    copyCmdBtn.textContent = 'Copy Streamlink';
+                                    copyCmdBtn.classList.remove('copied');
                                 }, 2000);
                             });
                         });
@@ -119,6 +167,9 @@
                         linkContainer.appendChild(link);
                         channelDiv.appendChild(linkContainer);
                         channelDiv.appendChild(copyBtn);
+                        commandContainer.appendChild(commandText);
+                        commandContainer.appendChild(copyCmdBtn);
+                        channelDiv.appendChild(commandContainer);
                         container.appendChild(channelDiv);
                     });
                     

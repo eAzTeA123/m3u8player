@@ -1,5 +1,240 @@
 {
-  "results": [],
-  "proxy_used": "brd.superproxy.io:33335:brd-customer-hl_5a025b10-zone-freemium-ip-185.150.85.170:ly9d05070osi",
-  "timestamp": "2025-05-16 17:25:47"
+  "results": [
+    {
+      "name": "Dazn 1",
+      "m3u8": "https://community.wideiptv.top/DAZNDE/index.fmp4.m3u8?token=37a5bfc44046d2f21eb16d7be48f956dfd97d6e4-f3332d95ebd474c3847372439ce65a97-1747427001-1747416201",
+      "url": "https://www.freeshot.live/live-tv/dazn-1-de/231"
+    },
+    {
+      "name": "Dazn 2",
+      "m3u8": "https://community.wideiptv.top/DAZN2DE/index.fmp4.m3u8?token=ddc64d06f33766970dd796d14300fb67de958ba5-2fd3522e6c01dc59e808c91614a37fcd-1747427067-1747416267",
+      "url": "https://www.freeshot.live/live-tv/dazn-2-de/232"
+    },
+    {
+      "name": "Sky Sport Mix",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportMixDE/index.fmp4.m3u8?token=f1a37db89baa8bd7f8b2017d186d85fdac2d9f47-94b7a6f1fb47e6692ecaabf594c98372-1747427102-1747416302",
+      "url": "https://freeshot.live/live-tv/sky-sport-mix-de/519"
+    },
+    {
+      "name": "Sport 1",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SPORT1DE/index.fmp4.m3u8?token=d47a7924f42f6eccbf5a0039ad4808d935066b8e-62bdfeeaf067df99d3e2a0ef8d059e35-1747427136-1747416336",
+      "url": "https://freeshot.live/live-tv/sport1-de/520"
+    },
+    {
+      "name": "Sky Sport F1",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportF1DE/index.fmp4.m3u8?token=c5cdfb474a43476c6f6f5f0b7072f9acdfbfc295-974e5a8382dcbc8d07d653cebbe6cfa0-1747427185-1747416385",
+      "url": "https://freeshot.live/live-tv/sky-sport-f1-de/379"
+    },
+    {
+      "name": "Sky Sport Premier League",
+      "m3u8": "https://community.wideiptv.top/SkySportPremierLeagueDE/index.fmp4.m3u8?token=fbd410ea43cae72d8cbe93cedb62906d83b985fd-6e728d19143528988bddc6ed2c388fe6-1747427217-1747416417",
+      "url": "https://freeshot.live/live-tv/sky-sport-premier-league-de/354"
+    },
+    {
+      "name": "Sky Sport News",
+      "m3u8": "https://community.wideiptv.top/SkySportsNewsDE/index.fmp4.m3u8?token=7cbae4c92ce085be612d37c98142e7b8ca77609a-9751d49366d4190a83319230015600f1-1747427253-1747416453",
+      "url": "https://freeshot.live/live-tv/sky-sports-news-de/353"
+    },
+    {
+      "name": "Sky Sport Top Event",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportTopEvent/index.fmp4.m3u8?token=3c9994bd125a360a65e9773a504e5d841af3671b-0dacab85205f77fb29d40fa81131bd52-1747427291-1747416491",
+      "url": "https://freeshot.live/live-tv/sky-sport-top-event-de/243"
+    },
+    {
+      "name": "Sky Sport Bundesliga",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportsBundesliga/index.fmp4.m3u8?token=5f73fd3f6532ee2492fe553642a4457eeeede63c-5bbe389219e862525a038f496f6eb888-1747427330-1747416530",
+      "url": "https://freeshot.live/live-tv/sky-sport-bundesliga-de/25"
+    },
+    {
+      "name": "Real Madrid TV [UK]",
+      "m3u8": "https://rmtv.akamaized.net/hls/live/2043154/rmtv-en-web/bitrate_3.m3u8",
+      "url": "https://freeshot.live/live-tv/real-madrid-tv-uk/361"
+    },
+    {
+      "name": "LFC TV [UK]",
+      "m3u8": "https://community.wideiptv.top/LFCTV/index.fmp4.m3u8?token=9352fa258545af857d7be92b13d7a021c7d37829-cbdb85b2d7f1de379fcbabbc91df7a13-1747427423-1747416623",
+      "url": "https://freeshot.live/live-tv/lfctv-uk/343",
+      "error": "Page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/lfctv-uk/343\", waiting until \"load\"\n"
+    },
+    {
+      "name": "Sky Sports NFL [UK]",
+      "m3u8": "https://community.wideiptv.top/skysportsaction/index.fmp4.m3u8?token=a54371a2b2b4b7845a8591dcf5737b57e3589956-4ad60a9b423ea801468cc2550ec271c6-1747427488-1747416688",
+      "url": "https://freeshot.live/live-tv/sky-sports-nfl/276"
+    },
+    {
+      "name": "MU TV [UK]",
+      "m3u8": "https://bcovlive-a.akamaihd.net/r2d2c4ca5bf57456fb1d16255c1a535c8/eu-west-1/6058004203001/playlist.m3u8",
+      "url": "https://freeshot.live/live-tv/mutv-uk/191"
+    },
+    {
+      "name": "Premier Sports 1 [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/premier-sports-1-uk/277",
+      "error": "Page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/premier-sports-1-uk/277\", waiting until \"load\"\n"
+    },
+    {
+      "name": "Premier Sports 2 [UK]",
+      "m3u8": "https://community.wideiptv.top/PREMIERSPORTS2/index.fmp4.m3u8?token=fa454ec657b0135080a173b9f5ad7e98067692cd-068c9e41d10261f0e66eb0e0652e0a1e-1747427625-1747416825",
+      "url": "https://freeshot.live/live-tv/premier-sports-2-uk/278"
+    },
+    {
+      "name": "LaLiga TV [UK]",
+      "m3u8": "https://community.wideiptv.top/ViaplayLaLigaUK/index.fmp4.m3u8?token=b45fad02311288f02ccf20f8e4dec5bad012229a-7e3991acb7055780fbaa0935b3b471bd-1747427725-1747416925",
+      "url": "https://freeshot.live/live-tv/la-liga-tv-uk/285"
+    },
+    {
+      "name": "Sky Sports Mix [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/sky-sports-mix-uk/23"
+    },
+    {
+      "name": "Sky Premier League [UK]",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/skysportspremierleague/index.fmp4.m3u8?token=df206d1dca1308134b55870b5efd3d08e0dcdf63-fef95dee66d822f520761dd5151a82b0-1747427888-1747417088",
+      "url": "https://freeshot.live/live-tv/sky-sports-premier-league-uk/17"
+    },
+    {
+      "name": "Sky Main Event [UK]",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/skysportsmainevent/index.fmp4.m3u8?token=080572980c6248c7f1e4bc177e847fb3fd448125-09d73643058dee1a450642ccc186cb15-1747427944-1747417144",
+      "url": "https://freeshot.live/live-tv/sky-sports-main-event-live-uk/15"
+    },
+    {
+      "name": "Sky Sports Football [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/sky-sports-football-uk/14"
+    },
+    {
+      "name": "Sky Sports News [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/sky-sports-news-uk/16",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/sky-sports-news-uk/16\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/sky-sports-news-uk/16\", waiting until \"load\"\n"
+    },
+    {
+      "name": "Sky Sports F1 [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/sky-sports-f1-uk/18",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/sky-sports-f1-uk/18\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/sky-sports-f1-uk/18\", waiting until \"load\"\n"
+    },
+    {
+      "name": "Sky Premier League [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/sky-sports-premier-league-uk/17",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/sky-sports-premier-league-uk/17\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/sky-sports-premier-league-uk/17\", waiting until \"load\"\n"
+    },
+    {
+      "name": "TNT Sports 1 [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/tnt-sports-1-uk/10",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/tnt-sports-1-uk/10\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/tnt-sports-1-uk/10\", waiting until \"load\"\n"
+    },
+    {
+      "name": "TNT Sports 2 [UK]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/tnt-sports-2-uk/11",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/tnt-sports-2-uk/11\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/tnt-sports-2-uk/11\", waiting until \"load\"\n"
+    },
+    {
+      "name": "ESPNU [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/espnu-usa/541",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/espnu-usa/541\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/espnu-usa/541\", waiting until \"load\"\n"
+    },
+    {
+      "name": "Fox News [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/fox-news/492",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/fox-news/492\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/fox-news/492\", waiting until \"load\"\n"
+    },
+    {
+      "name": "FX TV [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/fx-tv/478",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/fx-tv/478\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/fx-tv/478\", waiting until \"load\"\n"
+    },
+    {
+      "name": "CBS NEWS [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/cbs-news/410",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/cbs-news/410\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/cbs-news/410\", waiting until \"load\"\n"
+    },
+    {
+      "name": "DAZN [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/dazn/287",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/dazn/287\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/dazn/287\", waiting until \"load\"\n"
+    },
+    {
+      "name": "CBS [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/cbs-usa/290",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/cbs-usa/290\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/cbs-usa/290\", waiting until \"load\"\n"
+    },
+    {
+      "name": "ABC [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/abc-usa/289",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/abc-usa/289\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/abc-usa/289\", waiting until \"load\"\n"
+    },
+    {
+      "name": "FOX [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/fox-usa/292",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/fox-usa/292\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/fox-usa/292\", waiting until \"load\"\n"
+    },
+    {
+      "name": "HBO [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/hbo-usa/288",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/hbo-usa/288\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/hbo-usa/288\", waiting until \"load\"\n"
+    },
+    {
+      "name": "CNN USA [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/cnn-usa/113",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/cnn-usa/113\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/cnn-usa/113\", waiting until \"load\"\n"
+    },
+    {
+      "name": "FOX SPORTS 1 [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/fox-sports-1-usa/111",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/fox-sports-1-usa/111\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/fox-sports-1-usa/111\", waiting until \"load\"\n"
+    },
+    {
+      "name": "EFOX SPORTS 2 [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/fox-sports-2-usa/112",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/fox-sports-2-usa/112\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/fox-sports-2-usa/112\", waiting until \"load\"\n"
+    },
+    {
+      "name": "NBA TV [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/nba-tv/116",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/nba-tv/116\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/nba-tv/116\", waiting until \"load\"\n"
+    },
+    {
+      "name": "BEIN SPORTS [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/bein-sports-usa/114",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/bein-sports-usa/114\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/bein-sports-usa/114\", waiting until \"load\"\n"
+    },
+    {
+      "name": "WWE Network [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/wwe-network-usa/192",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/wwe-network-usa/192\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/wwe-network-usa/192\", waiting until \"load\"\n"
+    },
+    {
+      "name": "ESPN 1 [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/espn-usa/109",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/espn-usa/109\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/espn-usa/109\", waiting until \"load\"\n"
+    },
+    {
+      "name": "ESPN 2 [USA]",
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/espn-2-usa/110",
+      "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://freeshot.live/live-tv/espn-2-usa/110\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/espn-2-usa/110\", waiting until \"load\"\n"
+    }
+  ],
+  "proxy_used": "brd.superproxy.io:33335:brd-customer-hl_5a025b10-zone-freemium-ip-209.242.213.180:ly9d05070osi",
+  "timestamp": "2025-05-16 17:46:14"
 }

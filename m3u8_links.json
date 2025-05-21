@@ -2,215 +2,52 @@
   "results": [
     {
       "name": "Dazn 1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZNDE/index.fmp4.m3u8?token=6e64afbe5363354378598e4fd48e21e89eadc98f-549501a00db2709545c22c698414fa7c-1747580220-1747569420",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZNDE/index.fmp4.m3u8?token=cb9dd0eab082bad701ddd76e05afec57e38c2479-f6d6fdc3c083d1d820b3ef227eb05479-1747846870-1747836070",
       "url": "https://www.freeshot.live/live-tv/dazn-1-de/231"
     },
     {
       "name": "Dazn 2",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZN2DE/index.fmp4.m3u8?token=0b6b671b58e466de403cfc5afbd8b38ca21d2cab-383518a20e50629e88474e4a0876ca45-1747580261-1747569461",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/DAZN2DE/index.fmp4.m3u8?token=e17afd2a3c50d0a3b80ea1a295c7eb618fb8d119-d1e92c151d36b18cb33872d6d6bfe8c2-1747846925-1747836125",
       "url": "https://www.freeshot.live/live-tv/dazn-2-de/232"
     },
     {
       "name": "Sky Sport Mix",
-      "m3u8": "https://community.wideiptv.top/SkySportMixDE/index.fmp4.m3u8?token=d791562b47facc1269e20120c528271fd163fbb7-c9a45324dd8684e5f8835a6ad69b61c1-1747580313-1747569513",
+      "m3u8": "https://community.wideiptv.top/SkySportMixDE/index.fmp4.m3u8?token=5de7625e5affcff53143ab95bed7569d202485a3-4ee11bd5e7ebcbc92437a8889b044050-1747846947-1747836147",
       "url": "https://freeshot.live/live-tv/sky-sport-mix-de/519"
     },
     {
       "name": "Sport 1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SPORT1DE/index.fmp4.m3u8?token=fbb3b7ddfe7ebd9a945514d8cb57c47fbbff6402-0482941f15dab2649d030aa97ee98ee3-1747580359-1747569559",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SPORT1DE/index.fmp4.m3u8?token=8898a8ee9dbb8d2908d78e34247ca09bb0fb0cdf-68800f545bce0d5fb0231428cf7355cd-1747846970-1747836170",
       "url": "https://freeshot.live/live-tv/sport1-de/520"
     },
     {
       "name": "Sky Sport F1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportF1DE/index.fmp4.m3u8?token=ec9d4f6783733d3c2c5aff1730e20d684fa5980f-d0fc36aa1ef674e78957328bd4f81cae-1747580382-1747569582",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportF1DE/index.fmp4.m3u8?token=ca0d2b2b1a3e4d43b110bbe1d2bf0e525ae7ad90-ebca2aa7c1196ad556d83ff0ba08e11c-1747846992-1747836192",
       "url": "https://freeshot.live/live-tv/sky-sport-f1-de/379"
     },
     {
       "name": "Sky Sport Premier League",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportPremierLeagueDE/index.fmp4.m3u8?token=4afa927af45a6a18518f1254b7101690cb598fce-465eda49745c56ba9b715d0a614a3ca5-1747580407-1747569607",
+      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportPremierLeagueDE/index.fmp4.m3u8?token=a3104cddbf097b51fc4f7bc5f82c27cfa52f1361-a7fe41085cd33119bdc38bc8785464f2-1747847013-1747836213",
       "url": "https://freeshot.live/live-tv/sky-sport-premier-league-de/354"
     },
     {
       "name": "Sky Sport News",
-      "m3u8": "https://community.wideiptv.top/SkySportsNewsDE/index.fmp4.m3u8?token=ebbce060b176735005056b5cb387a2caab0284e6-567b16d7834c073bdc5d214b47163027-1747580431-1747569631",
+      "m3u8": "https://community.wideiptv.top/SkySportsNewsDE/index.fmp4.m3u8?token=8e08df72e8396af4830ecb1a3c37084d14ba8493-407ea4ca0bc46c120a2d464438c046d7-1747847035-1747836235",
       "url": "https://freeshot.live/live-tv/sky-sports-news-de/353"
     },
     {
       "name": "Sky Sport Top Event",
-      "m3u8": "https://community.wideiptv.top/SkySportTopEvent/index.fmp4.m3u8?token=1848014ff1bd6f8280ca3b71d9ed1f4e5de536df-d2b6c056f41f25f81049f05ea392cb42-1747580453-1747569653",
-      "url": "https://freeshot.live/live-tv/sky-sport-top-event-de/243"
+      "m3u8": null,
+      "url": "https://freeshot.live/live-tv/sky-sport-top-event-de/243",
+      "error": "Page.goto: Target page, context or browser has been closed\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/sky-sport-top-event-de/243\", waiting until \"load\"\n"
     },
     {
       "name": "Sky Sport Bundesliga",
-      "m3u8": "https://community.wideiptv.top/SkySportsBundesliga/index.fmp4.m3u8?token=75602476461dda8297fdaca5921f1e2198b00e26-f1d20b49288f75c877416076a5480c74-1747580475-1747569675",
-      "url": "https://freeshot.live/live-tv/sky-sport-bundesliga-de/25"
-    },
-    {
-      "name": "Real Madrid TV [UK]",
       "m3u8": null,
-      "url": "https://freeshot.live/live-tv/real-madrid-tv-uk/361"
-    },
-    {
-      "name": "LFC TV [UK]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/LFCTV/index.fmp4.m3u8?token=e4f0370862e86a66ff2800929dfcc6bf85273dab-d04c870bcbbc5ead7d8eff4318f19e98-1747580553-1747569753",
-      "url": "https://freeshot.live/live-tv/lfctv-uk/343"
-    },
-    {
-      "name": "Sky Sports NFL [UK]",
-      "m3u8": "https://community.wideiptv.top/skysportsaction/index.fmp4.m3u8?token=f5cc2da47dbb5a099ef792eaa2cf322742b4d10c-80de705238220f8e50a825fbaac2e057-1747580588-1747569788",
-      "url": "https://freeshot.live/live-tv/sky-sports-nfl/276"
-    },
-    {
-      "name": "MU TV [UK]",
-      "m3u8": "https://bcovlive-a.akamaihd.net/r2d2c4ca5bf57456fb1d16255c1a535c8/eu-west-1/6058004203001/playlist.m3u8",
-      "url": "https://freeshot.live/live-tv/mutv-uk/191"
-    },
-    {
-      "name": "Premier Sports 1 [UK]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/PREMIERSPORTS1/index.fmp4.m3u8?token=f5f073a51bbf798d61f4b96c93cf8f381ff08fe9-c4d45c0d701c9040d09634876d51c334-1747580644-1747569844",
-      "url": "https://freeshot.live/live-tv/premier-sports-1-uk/277"
-    },
-    {
-      "name": "Premier Sports 2 [UK]",
-      "m3u8": "https://community.wideiptv.top/PREMIERSPORTS2/index.fmp4.m3u8?token=fb237c9cbe48535d18122d889ba4e8ffead99059-1e970cf1393d0a872fd3f2c76b303c3e-1747580671-1747569871",
-      "url": "https://freeshot.live/live-tv/premier-sports-2-uk/278"
-    },
-    {
-      "name": "LaLiga TV [UK]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/ViaplayLaLigaUK/index.fmp4.m3u8?token=8e60d8f2443d4c33d720c07a66aec4bb4ce2fee5-9d06a019aea5ec948a11ad70481258c9-1747580726-1747569926",
-      "url": "https://freeshot.live/live-tv/la-liga-tv-uk/285"
-    },
-    {
-      "name": "Sky Sports Mix [UK]",
-      "m3u8": "https://community.wideiptv.top/skysportsmixuk/index.fmp4.m3u8?token=f5b2d36a494dc5439095f18b21989003acbdace5-df7b8fbaf0da9efefaee20a0935978c3-1747580750-1747569950",
-      "url": "https://freeshot.live/live-tv/sky-sports-mix-uk/23"
-    },
-    {
-      "name": "Sky Premier League [UK]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/skysportspremierleague/index.fmp4.m3u8?token=23712d5f4938307dbd235288426d3a5a2a429fe4-ae7d89ed709a47172f5aa08e040089f9-1747580775-1747569975",
-      "url": "https://freeshot.live/live-tv/sky-sports-premier-league-uk/17"
-    },
-    {
-      "name": "Sky Main Event [UK]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/skysportsmainevent/index.fmp4.m3u8?token=17d148c7fd4627a7b4432bc844ab4a1899de1f4c-cf4fd145c2a1b98b1c446113349ec833-1747580816-1747570016",
-      "url": "https://freeshot.live/live-tv/sky-sports-main-event-live-uk/15"
-    },
-    {
-      "name": "Sky Sports Football [UK]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportsFootballUK/index.fmp4.m3u8?token=359b37a4d8e430be132bc4566d5fc1b2912be45c-6f4bf8d95ce984d16acd7a2f020ec1bf-1747580840-1747570040",
-      "url": "https://freeshot.live/live-tv/sky-sports-football-uk/14"
-    },
-    {
-      "name": "Sky Sports News [UK]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/skysportsnews/index.fmp4.m3u8?token=3b4add570d9a51a72df6b2ae1e469f4f403dcfab-5c55ef22e2f2ab499fcea2e567bae211-1747580864-1747570064",
-      "url": "https://freeshot.live/live-tv/sky-sports-news-uk/16"
-    },
-    {
-      "name": "Sky Sports F1 [UK]",
-      "m3u8": "https://community.wideiptv.top/SkySportsF1/index.fmp4.m3u8?token=7d47a192df6b68925da8efe513777812527c2846-d87aadc02a79a19510f5b81bb28f307d-1747580890-1747570090",
-      "url": "https://freeshot.live/live-tv/sky-sports-f1-uk/18"
-    },
-    {
-      "name": "Sky Premier League [UK]",
-      "m3u8": "https://community.wideiptv.top/skysportspremierleague/index.fmp4.m3u8?token=16df17131688643ca86b5b07855077dc1eead6a3-0895f62a9f91f0e9cb52dbc202778341-1747580918-1747570118",
-      "url": "https://freeshot.live/live-tv/sky-sports-premier-league-uk/17"
-    },
-    {
-      "name": "TNT Sports 1 [UK]",
-      "m3u8": "https://community.wideiptv.top/TNT1UK/index.fmp4.m3u8?token=7e684cb0983d81938bf5dbe15fa69cd9f777652d-a568fb8d4722610b0c5b867e7e6d81bf-1747580943-1747570143",
-      "url": "https://freeshot.live/live-tv/tnt-sports-1-uk/10"
-    },
-    {
-      "name": "TNT Sports 2 [UK]",
-      "m3u8": "https://community.wideiptv.top/tntsports2/index.fmp4.m3u8?token=21ac11fdf523891b815aee151cceac40d3144780-1a9872a3244bb5a41597148d35b55754-1747580968-1747570168",
-      "url": "https://freeshot.live/live-tv/tnt-sports-2-uk/11"
-    },
-    {
-      "name": "ESPNU [USA]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/ESPNU/index.fmp4.m3u8?token=78acfeb6ec77262c8e2c00bd3d11cde0cf03bab5-478d112457b9bf16b93e38d1a3f05fc2-1747580995-1747570195",
-      "url": "https://freeshot.live/live-tv/espnu-usa/541"
-    },
-    {
-      "name": "Fox News [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/fox-news/492"
-    },
-    {
-      "name": "FX TV [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/fx-tv/478"
-    },
-    {
-      "name": "CBS NEWS [USA]",
-      "m3u8": "https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8",
-      "url": "https://freeshot.live/live-tv/cbs-news/410"
-    },
-    {
-      "name": "DAZN [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/dazn/287"
-    },
-    {
-      "name": "CBS [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/cbs-usa/290"
-    },
-    {
-      "name": "ABC [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/abc-usa/289"
-    },
-    {
-      "name": "FOX [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/fox-usa/292"
-    },
-    {
-      "name": "HBO [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/hbo-usa/288"
-    },
-    {
-      "name": "CNN USA [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/cnn-usa/113"
-    },
-    {
-      "name": "FOX SPORTS 1 [USA]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/FOXSPORTS1/index.fmp4.m3u8?token=0b281778b69efc5bf9b67779808e8886ec9416c8-dbeebd4180d184d18d4108c96ab40d3b-1747581285-1747570485",
-      "url": "https://freeshot.live/live-tv/fox-sports-1-usa/111"
-    },
-    {
-      "name": "EFOX SPORTS 2 [USA]",
-      "m3u8": "https://community.wideiptv.top/FOXSPORTS2/index.fmp4.m3u8?token=2db0657b26f772a9e9ec47826c68c5e7b2a2d536-f8606eac0e3f6386138f33b98e6dc9a7-1747581312-1747570512",
-      "url": "https://freeshot.live/live-tv/fox-sports-2-usa/112"
-    },
-    {
-      "name": "NBA TV [USA]",
-      "m3u8": null,
-      "url": "https://freeshot.live/live-tv/nba-tv/116"
-    },
-    {
-      "name": "BEIN SPORTS [USA]",
-      "m3u8": "https://community.wideiptv.top/beINSPORTSUS/index.fmp4.m3u8?token=c2d4767466c1f401cd0bb04077cf4a0ae8fd8125-e269818b423b14d4283bc2dc7cf6789a-1747581391-1747570591",
-      "url": "https://freeshot.live/live-tv/bein-sports-usa/114"
-    },
-    {
-      "name": "WWE Network [USA]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/WWE/index.fmp4.m3u8?token=8b52ca6a331f246648a40d7167a0b7bc384d8a4b-ea870a4fded74120e4ec6a00e6d2a4f1-1747581415-1747570615",
-      "url": "https://freeshot.live/live-tv/wwe-network-usa/192"
-    },
-    {
-      "name": "ESPN 1 [USA]",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/ESPN/index.fmp4.m3u8?token=4259254629f09f856886e32f20988de5ce554721-604b9dab75bc2b44c496f85e0df8b9fa-1747581440-1747570640",
-      "url": "https://freeshot.live/live-tv/espn-usa/109"
-    },
-    {
-      "name": "ESPN 2 [USA]",
-      "m3u8": "https://community.wideiptv.top/ESPN2/index.fmp4.m3u8?token=6da835bc277674233b94d6f5f5ef2bd107bffef0-8a993c3cfd86059fc916529ee11bcdf9-1747581495-1747570695",
-      "url": "https://freeshot.live/live-tv/espn-2-usa/110"
+      "url": "https://freeshot.live/live-tv/sky-sport-bundesliga-de/25",
+      "error": "Page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/sky-sport-bundesliga-de/25\", waiting until \"load\"\n"
     }
   ],
   "proxy_used": "proxy-us.proxy-cheap.com:5959:pcykxuIu20-res-any:PC_9qysTuydP1JPsux5W",
-  "timestamp": "2025-05-18 14:23:38"
+  "timestamp": "2025-05-21 16:10:07"
 }

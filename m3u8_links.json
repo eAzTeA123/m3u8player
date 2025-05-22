@@ -3,52 +3,9 @@
     {
       "name": "Dazn 1",
       "m3u8": null,
-      "url": "https://www.freeshot.live/live-tv/dazn-1-de/231",
-      "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.freeshot.live/live-tv/dazn-1-de/231\", waiting until \"load\"\n"
-    },
-    {
-      "name": "Dazn 2",
-      "m3u8": "https://community.wideiptv.top/DAZN2DE/index.fmp4.m3u8?token=aa796ea7045ed4f076a1d9f92bba43f733ca85f9-ab3d9d8fb68d2384b7d89a47c8a3329b-1747847162-1747836362",
-      "url": "https://www.freeshot.live/live-tv/dazn-2-de/232",
-      "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.freeshot.live/live-tv/dazn-2-de/232\", waiting until \"load\"\n"
-    },
-    {
-      "name": "Sky Sport Mix",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportMixDE/index.fmp4.m3u8?token=e382788c1f2daa298445caa024389145a2917501-09d955525496a9cf5f2072c9301fe9b6-1747847182-1747836382",
-      "url": "https://freeshot.live/live-tv/sky-sport-mix-de/519"
-    },
-    {
-      "name": "Sport 1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SPORT1DE/index.fmp4.m3u8?token=599d24107ec3c8a20e06afc645edd5e023a345d1-a321f0507a46fec7639e418ddd496f61-1747847206-1747836406",
-      "url": "https://freeshot.live/live-tv/sport1-de/520",
-      "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://freeshot.live/live-tv/sport1-de/520\", waiting until \"load\"\n"
-    },
-    {
-      "name": "Sky Sport F1",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportF1DE/index.fmp4.m3u8?token=c8ce01b1e99824bf8f797b2651564d9c0bb52967-ea9be5f3518b98f1bd54bf89f4fedba0-1747847236-1747836436",
-      "url": "https://freeshot.live/live-tv/sky-sport-f1-de/379"
-    },
-    {
-      "name": "Sky Sport Premier League",
-      "m3u8": "https://community.wideiptv.top/SkySportPremierLeagueDE/index.fmp4.m3u8?token=3bc97e00b7c7eb46513f53cabf8fef3d966317e1-3b1fbbce80ab74cbcf7108b46c033c5a-1747847273-1747836473",
-      "url": "https://freeshot.live/live-tv/sky-sport-premier-league-de/354"
-    },
-    {
-      "name": "Sky Sport News",
-      "m3u8": "https://beautifulpeople.lovecdn.ru/SkySportsNewsDE/index.fmp4.m3u8?token=8a627eb28bbf8a2d5397679416ef77e4805e7721-6bec015f687faab9d1ec0187dbb1d2b1-1747847295-1747836495",
-      "url": "https://freeshot.live/live-tv/sky-sports-news-de/353"
-    },
-    {
-      "name": "Sky Sport Top Event",
-      "m3u8": "https://community.wideiptv.top/SkySportTopEvent/index.fmp4.m3u8?token=dba7f30b3b182faaf08efa6f28f864e470532ba0-f013266f474e37eeca18c5fcdf7f764f-1747847320-1747836520",
-      "url": "https://freeshot.live/live-tv/sky-sport-top-event-de/243"
-    },
-    {
-      "name": "Sky Sport Bundesliga",
-      "m3u8": "https://community.wideiptv.top/SkySportsBundesliga/index.fmp4.m3u8?token=73bccafc823b23bb1e3339536f8095cb96099684-ccb5aa488a869af80cc5b9e8de975dc2-1747847344-1747836544",
-      "url": "https://freeshot.live/live-tv/sky-sport-bundesliga-de/25"
+      "url": "https://vidsrc.cc/v2/embed/movie/693134"
     }
   ],
   "proxy_used": "proxy-us.proxy-cheap.com:5959:pcykxuIu20-res-any:PC_9qysTuydP1JPsux5W",
-  "timestamp": "2025-05-21 16:14:29"
+  "timestamp": "2025-05-22 21:49:06"
 }
